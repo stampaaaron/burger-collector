@@ -17,6 +17,16 @@ export function App() {
             backComponent={
               <>
                 <h3>Gutschein für {item.label}!</h3>
+                {item.locations && (
+                  <div className="locations">
+                    Einlösbar in:
+                    <ul>
+                      {item.locations?.map((location) => (
+                        <li>{location}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
                 <label className="burger-item">
                   {item.checked ? "Eingelöst" : "Einlösen"}
                   <input

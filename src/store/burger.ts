@@ -14,12 +14,20 @@ const initialBurgerState: BurgerItem[] = [
     }
     return items;
   })(),
+  {
+    key: 28,
+    imageSrc: "public/hard-rock-cafe.png",
+    label: "ein Essen im HardRock Cafe",
+    locations: ["Berlin", "Zürich", "Wil ZH"],
+    checked: false,
+  },
 ];
 
 export type BurgerItem = {
   key: number;
-  imageSrc: string;
+  imageSrc?: string;
   label: string;
+  locations?: string[];
   checked: boolean;
 };
 

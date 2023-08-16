@@ -5,13 +5,23 @@ const initialBurgerState: BurgerItem[] = [
   ...(() => {
     const items = [];
     for (let i = 0; i < 27; i++) {
-      items.push({ key: i + 1, checked: false });
+      items.push({
+        key: i + 1,
+        imageSrc: "./cheese-burger.jpeg",
+        label: "einen Cheese-Burger",
+        checked: false,
+      });
     }
     return items;
   })(),
 ];
 
-export type BurgerItem = { key: number; checked: boolean };
+export type BurgerItem = {
+  key: number;
+  imageSrc: string;
+  label: string;
+  checked: boolean;
+};
 
 interface BurgerState {
   burgers: BurgerItem[];

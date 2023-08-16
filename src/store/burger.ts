@@ -7,7 +7,7 @@ const initialBurgerState: BurgerItem[] = [
     for (let i = 0; i < 27; i++) {
       items.push({
         key: i + 1,
-        imageSrc: "./cheese-burger.jpeg",
+        imageSrc: "public/cheese-burger.jpeg",
         label: "einen Cheese-Burger",
         checked: false,
       });

@@ -13,7 +13,13 @@ export function App() {
         {burgers.map((item) => (
           <ReactFlipCard
             flipTrigger="onClick"
-            frontComponent={<img src={item.imageSrc} />}
+            frontComponent={
+              <img
+                src={
+                  item.imageSrc && new URL(item.imageSrc, import.meta.url).href
+                }
+              />
+            }
             backComponent={
               <>
                 <h3>Gutschein für {item.label}!</h3>

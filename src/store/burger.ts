@@ -7,7 +7,7 @@ const initialBurgerState: BurgerItem[] = [
     for (let i = 0; i < 27; i++) {
       items.push({
         key: i + 1,
-        imageSrc: "public/cheese-burger.jpeg",
+        imageSrc: "/cheese-burger.jpeg",
         label: "einen Cheese-Burger",
         checked: false,
       });
@@ -16,7 +16,7 @@ const initialBurgerState: BurgerItem[] = [
   })(),
   {
     key: 28,
-    imageSrc: "public/hard-rock-cafe.png",
+    imageSrc: "/hard-rock-cafe.png",
     label: "ein Essen im HardRock Cafe",
     locations: ["Berlin", "Zürich", "Wil ZH"],
     checked: false,

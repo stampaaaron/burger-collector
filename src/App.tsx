@@ -14,11 +14,7 @@ export function App() {
           <ReactFlipCard
             flipTrigger="onClick"
             frontComponent={
-              <img
-                src={
-                  item.imageSrc && new URL(item.imageSrc, import.meta.url).href
-                }
-              />
+              <img src={`${import.meta.env.BASE_URL}${item.imageSrc}`} />
             }
             backComponent={
               <>

@@ -19,6 +19,7 @@ const initialBurgerState: BurgerItem[] = [
     imageSrc: "hard-rock-cafe.png",
     label: "ein Essen im HardRock Cafe",
     locations: ["Berlin", "Zürich", "Wil ZH"],
+    large: true,
     checked: false,
   },
 ];
@@ -28,6 +29,7 @@ export type BurgerItem = {
   imageSrc?: string;
   label: string;
   locations?: string[];
+  large?: boolean;
   checked: boolean;
 };
 

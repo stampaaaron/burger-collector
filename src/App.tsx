@@ -11,36 +11,39 @@ export function App() {
       <p>List aller Gutscheine</p>
       <div className="burger-container">
         {burgers.map((item) => (
-          <ReactFlipCard
-            flipTrigger="onClick"
-            frontComponent={
-              <img src={`${import.meta.env.BASE_URL}${item.imageSrc}`} />
-            }
-            backComponent={
-              <>
-                <h3>Gutschein für {item.label}!</h3>
-                {item.locations && (
-                  <div className="locations">
-                    Einlösbar in:
-                    <ul>
-                      {item.locations?.map((location) => (
-                        <li>{location}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                <label className="burger-item">
-                  {item.checked ? "Eingelöst" : "Einlösen"}
-                  <input
-                    type="checkbox"
-                    id={item.key.toString()}
-                    checked={item.checked}
-                    onChange={() => checkBurger(item.key)}
-                  />
-                </label>
-              </>
-            }
-          ></ReactFlipCard>
+          <div style={item.large ? { gridColumn: "1/3" } : {}}>
+            <ReactFlipCard
+              containerStyle={item.large ? { columnSpan: "all" } : undefined}
+              flipTrigger="onClick"
+              frontComponent={
+                <img src={`${import.meta.env.BASE_URL}${item.imageSrc}`} />
+              }
+              backComponent={
+                <>
+                  <h3>Gutschein für {item.label}!</h3>
+                  {item.locations && (
+                    <div className="locations">
+                      Einlösbar in:
+                      <ul>
+                        {item.locations?.map((location) => (
+                          <li>{location}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  <label className="burger-item">
+                    {item.checked ? "Eingelöst" : "Einlösen"}
+                    <input
+                      type="checkbox"
+                      id={item.key.toString()}
+                      checked={item.checked}
+                      onChange={() => checkBurger(item.key)}
+                    />
+                  </label>
+                </>
+              }
+            ></ReactFlipCard>
+          </div>
         ))}
       </div>
     </>

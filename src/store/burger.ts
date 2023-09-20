@@ -1,19 +1,28 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+function getAmountOfItemsFromState(amount: number, state: string) {
+  const items = [];
+  for (let i = 0; i < amount; i++) {
+    items.push({
+      key: i + 1,
+      imageSrc: "cheese-burger.jpeg",
+      flag: `flags/${state}.svg`,
+      label: "einen Cheese-Burger",
+      checked: false,
+    });
+  }
+  return items;
+}
+
 const initialBurgerState: BurgerItem[] = [
-  ...(() => {
-    const items = [];
-    for (let i = 0; i < 27; i++) {
-      items.push({
-        key: i + 1,
-        imageSrc: "cheese-burger.jpeg",
-        label: "einen Cheese-Burger",
-        checked: false,
-      });
-    }
-    return items;
-  })(),
+  ...getAmountOfItemsFromState(3, "ca"),
+  ...getAmountOfItemsFromState(3, "us"),
+  ...getAmountOfItemsFromState(3, "vn"),
+  ...getAmountOfItemsFromState(5, "kh"),
+  ...getAmountOfItemsFromState(5, "th"),
+  ...getAmountOfItemsFromState(3, "qa"),
+  ...getAmountOfItemsFromState(5, "na"),
   {
     key: 28,
     imageSrc: "hard-rock-cafe.png",
@@ -28,6 +37,7 @@ export type BurgerItem = {
   key: number;
   imageSrc?: string;
   label: string;
+  flag?: string;
   locations?: string[];
   large?: boolean;
   checked: boolean;

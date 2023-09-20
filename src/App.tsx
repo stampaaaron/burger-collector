@@ -23,10 +23,17 @@ export function App() {
               containerStyle={item.large ? { columnSpan: "all" } : undefined}
               flipTrigger="onClick"
               frontComponent={
-                <img src={`${import.meta.env.BASE_URL}${item.imageSrc}`} />
+                <img
+                  src={`${import.meta.env.BASE_URL}${
+                    item.flag ?? item.imageSrc
+                  }`}
+                />
               }
               backComponent={
                 <>
+                  {!item.locations && (
+                    <img src={`${import.meta.env.BASE_URL}${item.imageSrc}`} />
+                  )}
                   <h3>Gutschein für {item.label}!</h3>
                   {item.locations && (
                     <div className="locations">

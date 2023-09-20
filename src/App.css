@@ -78,14 +78,14 @@ label {
 }
 
 label:has(input:checked) {
-  background-color: whitesmoke;
   cursor: not-allowed;
   text-decoration: line-through;
 }
 
-.ReactFlipCard__flipCardFront:has(
-    + .ReactFlipCard__flipCardBack input:checked
-  ) {
+.ReactFlipCard__flipCard:has(> .ReactFlipCard__flipCardBack input:checked)
+  > .ReactFlipCard__flipCardFront,
+.ReactFlipCard__flipCard:has(> .ReactFlipCard__flipCardBack input:checked)
+  > .ReactFlipCard__flipCardBack {
   filter: grayscale(1) opacity(0.3);
 }
 

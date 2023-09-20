@@ -27,7 +27,12 @@ const initialBurgerState: BurgerItem[] = [
     key: 28,
     imageSrc: "hard-rock-cafe.png",
     label: "ein Essen im HardRock Cafe",
-    locations: ["Berlin", "Zürich", "Wil ZH"],
+    locations: [
+      "Kanada (Niagara Falls)",
+      "Hawai (Honolulu)",
+      "Kambodscha (Angkor oder Phnom Penh)",
+      "Thailand (Bangkok)",
+    ],
     large: true,
     checked: false,
   },

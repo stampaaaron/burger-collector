@@ -2,20 +2,19 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 function getAmountOfItemsFromState(amount: number, state: string) {
-  const items = [];
+  const items: BurgerState["burgers"] = {};
   for (let i = 0; i < amount; i++) {
-    items.push({
-      key: i + 1,
+    items[`${state}-${i}`] = {
       imageSrc: "cheese-burger.jpeg",
       flag: `flags/${state}.svg`,
       label: "einen Cheese-Burger",
       checked: false,
-    });
+    };
   }
   return items;
 }
 
-const initialBurgerState: BurgerItem[] = [
+const initialBurgerState: BurgerState["burgers"] = {
   ...getAmountOfItemsFromState(3, "ca"),
   ...getAmountOfItemsFromState(3, "us"),
   ...getAmountOfItemsFromState(3, "vn"),
@@ -23,8 +22,7 @@ const initialBurgerState: BurgerItem[] = [
   ...getAmountOfItemsFromState(5, "th"),
   ...getAmountOfItemsFromState(3, "qa"),
   ...getAmountOfItemsFromState(5, "na"),
-  {
-    key: 28,
+  "hard-rock-cafe": {
     imageSrc: "hard-rock-cafe.png",
     label: "ein Essen im HardRock Cafe",
     locations: [
@@ -36,10 +34,9 @@ const initialBurgerState: BurgerItem[] = [
     large: true,
     checked: false,
   },
-];
+};
 
 export type BurgerItem = {
-  key: number;
   imageSrc?: string;
   label: string;
   flag?: string;
@@ -49,8 +46,8 @@ export type BurgerItem = {
 };
 
 interface BurgerState {
-  burgers: BurgerItem[];
-  checkBurger: (key: number) => void;
+  burgers: Record<string, BurgerItem>;
+  checkBurger: (key: string) => void;
 }
 
 export const useBurgerStore = create<BurgerState>()(
@@ -60,7 +57,7 @@ export const useBurgerStore = create<BurgerState>()(
       checkBurger: (key) =>
         set((state) => {
           const items = state.burgers;
-          items[key - 1] = { ...items[key - 1], checked: true };
+          items[key] = { ...items[key], checked: true };
           return { burgers: items };
         }),
     }),

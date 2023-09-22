@@ -5,7 +5,7 @@ import { useBurgerStore } from "./store/burger";
 export function App() {
   const { burgers, checkBurger } = useBurgerStore();
 
-  const hasCheckItem = burgers.some((item) => item.checked);
+  const hasCheckItem = Object.values(burgers).some((item) => item.checked);
 
   return (
     <>
@@ -17,8 +17,8 @@ export function App() {
           : "Zu deinem 27. Geburtstag stehen dir 27 Gutscheine für einen Cheeseburger zu. Diese Gutscheine kannst du frei irgendwo auf unserer Weltreise einlösen. Ganz am Ende dieser App findest du auch noch einen ganz besondern Gutschein..."}
       </p>
       <div className="burger-container">
-        {burgers.map((item) => (
-          <div style={item.large ? { gridColumn: "1/3" } : {}}>
+        {Object.entries(burgers).map(([key, item]) => (
+          <div key={key} style={item.large ? { gridColumn: "1/3" } : {}}>
             <ReactFlipCard
               containerStyle={item.large ? { columnSpan: "all" } : undefined}
               flipTrigger="onClick"
@@ -49,9 +49,9 @@ export function App() {
                     {item.checked ? "Eingelöst" : "Einlösen"}
                     <input
                       type="checkbox"
-                      id={item.key.toString()}
+                      id={key}
                       checked={item.checked}
-                      onChange={() => checkBurger(item.key)}
+                      onChange={() => checkBurger(key)}
                     />
                   </label>
                 </>

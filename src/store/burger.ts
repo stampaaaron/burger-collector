@@ -6,7 +6,7 @@ function getAmountOfItemsFromState(amount: number, state: string) {
   for (let i = 0; i < amount; i++) {
     items[`${state}-${i}`] = {
       imageSrc: "cheese-burger.jpeg",
-      flag: `flags/${state}.svg`,
+      flag: `flags/${state}.png`,
       label: "einen Cheese-Burger",
       checked: false,
     };
